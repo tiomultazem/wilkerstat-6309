@@ -1,71 +1,8 @@
-<!DOCTYPE html>
-<html>
 
-<head>
-
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
-    <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
-
-    <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <style>
-        #map_70a3cbf39d6bb6eaa0bea64f37cae182 {
-            position: relative;
-            width: 100.0%;
-            height: 100.0%;
-            left: 0.0%;
-            top: 0.0%;
-        }
-
-        .leaflet-container {
-            font-size: 1rem;
-        }
-    </style>
-
-    <style>
-        html,
-        body {
-            width: 100%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-    </style>
-
-    <style>
-        #map {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            right: 0;
-            left: 0;
-        }
-    </style>
-
-    <script>
         L_NO_TOUCH = false;
         L_DISABLE_3D = false;
-    </script>
+    
 
-
-</head>
-
-<body>
-
-
-    <script>
         document.addEventListener("DOMContentLoaded", function () {
 
             var sls = geo_json_94653f0dca41eb8429333221937dca3b;
@@ -103,12 +40,8 @@
             });
 
         });
-    </script>
+    
 
-    <div class="folium-map" id="map_70a3cbf39d6bb6eaa0bea64f37cae182"></div>
-
-</body>
-<script>
 
 
     var map_70a3cbf39d6bb6eaa0bea64f37cae182 = L.map(
@@ -23630,6 +23563,20 @@
 
     feature_group_bb8780f761fa5880bf3a88a9a3a874ce.addTo(map_70a3cbf39d6bb6eaa0bea64f37cae182);
 
-</script>
 
-</html>
+
+if ("geolocation" in navigator) {
+    var userMarker = null, userCircle = null;
+    navigator.geolocation.watchPosition(function(pos) {
+        var lat = pos.coords.latitude, lng = pos.coords.longitude, acc = pos.coords.accuracy;
+        var latlng = [lat, lng];
+        if (!userMarker) {
+            userMarker = L.marker(latlng).addTo(map_70a3cbf39d6bb6eaa0bea64f37cae182).bindPopup("Lokasi Anda");
+            userCircle = L.circle(latlng, {radius: acc, color: 'red'}).addTo(map_70a3cbf39d6bb6eaa0bea64f37cae182);
+            map_70a3cbf39d6bb6eaa0bea64f37cae182.setView(latlng, 16);
+        } else {
+            userMarker.setLatLng(latlng);
+            userCircle.setLatLng(latlng);
+        }
+    }, function(err){ console.warn(err.message); }, {enableHighAccuracy: true});
+}
