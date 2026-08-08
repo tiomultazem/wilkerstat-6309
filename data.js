@@ -23602,22 +23602,75 @@ if ("geolocation" in navigator) {
 
 document.addEventListener("DOMContentLoaded", function() {
     setTimeout(function() {
-        if (typeof geo_json_e097d65d88ecbd7e2a9820776bcf25c2 !== 'undefined') {
-            geo_json_e097d65d88ecbd7e2a9820776bcf25c2.eachLayer(function(layer) {
-                layer.on("click", function(e) {
-                    if (layer.options.fillColor === "yellow") {
-                        layer.setStyle({
-                            fillColor: "cyan",
-                            fillOpacity: 0.20
-                        });
-                    } else {
-                        layer.setStyle({
-                            fillColor: "yellow",
-                            fillOpacity: 0.15
-                        });
-                    }
-                });
+        
+    if (typeof geo_json_4a5300ec5425cd09d7ab23bad96a7988 !== 'undefined') {
+        geo_json_4a5300ec5425cd09d7ab23bad96a7988.eachLayer(function(layer) {
+            layer.on("click", function(e) {
+                if (e && e.originalEvent) {
+                    e.originalEvent.stopPropagation();
+                }
+                if (layer._isSelected) {
+                    layer.setStyle({
+                        fillColor: "cyan",
+                        fillOpacity: 0.20
+                    });
+                    layer._isSelected = false;
+                } else {
+                    layer.setStyle({
+                        fillColor: "yellow",
+                        fillOpacity: 0.40
+                    });
+                    layer._isSelected = true;
+                }
             });
-        }
-    }, 500);
+        });
+    }
+
+    if (typeof geo_json_e097d65d88ecbd7e2a9820776bcf25c2 !== 'undefined') {
+        geo_json_e097d65d88ecbd7e2a9820776bcf25c2.eachLayer(function(layer) {
+            layer.on("click", function(e) {
+                if (e && e.originalEvent) {
+                    e.originalEvent.stopPropagation();
+                }
+                if (layer._isSelected) {
+                    layer.setStyle({
+                        fillColor: "cyan",
+                        fillOpacity: 0.20
+                    });
+                    layer._isSelected = false;
+                } else {
+                    layer.setStyle({
+                        fillColor: "yellow",
+                        fillOpacity: 0.40
+                    });
+                    layer._isSelected = true;
+                }
+            });
+        });
+    }
+
+    if (typeof geo_json_ef6f8a93c42e79c0b2c35772722676b6 !== 'undefined') {
+        geo_json_ef6f8a93c42e79c0b2c35772722676b6.eachLayer(function(layer) {
+            layer.on("click", function(e) {
+                if (e && e.originalEvent) {
+                    e.originalEvent.stopPropagation();
+                }
+                if (layer._isSelected) {
+                    layer.setStyle({
+                        fillColor: "cyan",
+                        fillOpacity: 0.20
+                    });
+                    layer._isSelected = false;
+                } else {
+                    layer.setStyle({
+                        fillColor: "yellow",
+                        fillOpacity: 0.40
+                    });
+                    layer._isSelected = true;
+                }
+            });
+        });
+    }
+
+    }, 800);
 });
