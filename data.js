@@ -23589,11 +23589,35 @@ if ("geolocation" in navigator) {
         currentLatLng = [lat, lng];
         if (!userMarker) {
             userMarker = L.marker(currentLatLng).addTo(map_8c606eefbbae33fb798fc87f14c40000).bindPopup("Lokasi Anda");
-            userCircle = L.circle(currentLatLng, {radius: acc, color: 'red'}).addTo(map_8c606eefbbae33fb798fc87f14c40000);
+            userCircle = L.circle(currentLatLng, {radius: Math.min(acc, 500), color: '#007bff', fillColor: '#007bff', fillOpacity: 0.15, weight: 1}).addTo(map_8c606eefbbae33fb798fc87f14c40000);
             map_8c606eefbbae33fb798fc87f14c40000.setView(currentLatLng, 16);
         } else {
             userMarker.setLatLng(currentLatLng);
             userCircle.setLatLng(currentLatLng);
+            userCircle.setRadius(Math.min(acc, 500));
         }
     }, function(err){ console.warn(err.message); }, {enableHighAccuracy: true});
 }
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
+        if (typeof geo_json_e097d65d88ecbd7e2a9820776bcf25c2 !== 'undefined') {
+            geo_json_e097d65d88ecbd7e2a9820776bcf25c2.eachLayer(function(layer) {
+                layer.on("click", function(e) {
+                    if (layer.options.fillColor === "yellow") {
+                        layer.setStyle({
+                            fillColor: "cyan",
+                            fillOpacity: 0.20
+                        });
+                    } else {
+                        layer.setStyle({
+                            fillColor: "yellow",
+                            fillOpacity: 0.15
+                        });
+                    }
+                });
+            });
+        }
+    }, 500);
+});
