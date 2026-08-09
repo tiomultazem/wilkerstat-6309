@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function() {
         function geo_json_e097d65d88ecbd7e2a9820776bcf25c2_styler(feature) {
             switch(feature.id) {
                 default:
-                    return {"color": "white", "fillColor": "cyan", "fillOpacity": 0.2, "opacity": 0.2, "pane": "sls", "weight": 1};
+                    return {"color": "yellow", "fillColor": "cyan", "fillOpacity": 0.2, "opacity": 0.25, "pane": "sls", "weight": 1};
             }
         }
 
