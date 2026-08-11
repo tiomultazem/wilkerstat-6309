@@ -16,7 +16,7 @@ No installation is required. Simply open the link in a web browser.
 
 ## Contact
 
-Feel free to reach out to me via email at gilangprasetyo or any social media where we are connected.
+Feel free to reach out to me about this project via email at gilangprasetyo or any social media where we are connected.
 
 ## License
 
