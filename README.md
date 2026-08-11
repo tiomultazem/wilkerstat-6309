@@ -14,6 +14,10 @@ The application can be accessed directly through this link:
 
 No installation is required. Simply open the link in a web browser.
 
+## Contact
+
+Feel free to reach out to me via email at gilangprasetyo or any social media where we are connected.
+
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
